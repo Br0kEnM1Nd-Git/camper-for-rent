@@ -3,16 +3,16 @@
 :root {
   --main: #101828;
   --secondary: #475467;
-  --features: #e44848;
+  --button: #e44848;
   --block-features: #f2f4f7;
-  --rate: #ffc531;
+  --rating: #ffc531;
   --inputs: #f7f7f7;
 }
 
 * {
   margin: 0;
   padding: 0;
-  color: #333333;
+  color: var(--main);
 }
 
 ul,
@@ -21,7 +21,7 @@ ol {
 }
 
 a {
-  color: #333333;
+  color: var(--main);
   text-decoration: none;
 }
 
