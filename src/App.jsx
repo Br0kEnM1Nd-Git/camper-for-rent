@@ -7,7 +7,7 @@ const Home = lazy(() => import('./pages/Home'));
 const Catalog = lazy(() => import('./pages/Catalog'));
 const Favorites = lazy(() => import('./pages/Favorites'));
 
-export const App = () => {
+const App = () => {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
@@ -23,3 +23,5 @@ export const App = () => {
     </Suspense>
   );
 };
+
+export default App;
