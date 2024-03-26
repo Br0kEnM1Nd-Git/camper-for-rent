@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/434.1f94771e.chunk.js","mappings":"2KAAA,MAIA,EAJeA,KACNC,EAAAA,EAAAA,KAAA,OAAAC,SAAK,U","sources":["helpers/Loader.jsx"],"sourcesContent":["const Loader = () => {\n  return <div>Loader</div>;\n};\n\nexport default Loader;\n"],"names":["Loader","_jsx","children"],"sourceRoot":""}
