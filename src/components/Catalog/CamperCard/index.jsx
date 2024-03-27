@@ -1,63 +1,136 @@
 import sprite from 'assets/svg/sprite.svg';
 import {
+  CamperImageContainer,
+  CamperInfoContainer,
   CardContainer,
+  Description,
   DetailsContainer,
+  HeartButton,
   LocationContainer,
   MainInfoContainer,
   MainLineContainer,
+  RatingIcon,
+  RatingInfo,
   SecondaryInfoContainer,
   SecondaryLineContainer,
   ShowMoreButton,
 } from './CamperCard.styled';
+import capitalizeFirstLetter from 'helpers/capitalize';
+import { useState } from 'react';
+import Modal from 'components/Modal';
+import CamperDetails from 'components/CamperDetails';
 
-const CamperCard = () => {
+const CamperCard = ({ camperInfo }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleShowMore = () => {
+    setIsModalOpen(true);
+  };
+
+  const onClose = () => {
+    setIsModalOpen(false);
+  };
+
+  const {
+    gallery,
+    name,
+    price,
+    rating,
+    reviews,
+    location,
+    description,
+    adults,
+    engine,
+    transmission,
+    details: { beds },
+  } = camperInfo ?? {};
+
   return (
-    <CardContainer>
-      <div>
-        <img src="" alt="Camper" />
-      </div>
+    <>
+      <CardContainer>
+        <CamperImageContainer>
+          <img src={gallery[0]} alt="Camper" width="290px" height="310px" />
+        </CamperImageContainer>
 
-      <div>
-        <MainLineContainer>
-          <MainInfoContainer>
-            <h3>Car name</h3>
+        <CamperInfoContainer>
+          <MainLineContainer>
+            <MainInfoContainer>
+              <h3>{name}</h3>
 
-            <span>Price</span>
-          </MainInfoContainer>
+              <span>&#8364;{price}.00</span>
+            </MainInfoContainer>
 
-          <svg width="24px" height="24px" fill="none">
-            <use href={`${sprite}#icon-heart`} />
-          </svg>
-        </MainLineContainer>
+            <HeartButton width="24px" height="24px" fill="none">
+              <use href={`${sprite}#icon-heart`} />
+            </HeartButton>
+          </MainLineContainer>
 
-        <SecondaryLineContainer>
-          <svg width="24px" height="24px" fill="none">
-            <use href={`${sprite}#icon-star`} />
-          </svg>
+          <SecondaryLineContainer>
+            <RatingIcon width="16px" height="16px" fill="none">
+              <use href={`${sprite}#icon-rating`} />
+            </RatingIcon>
 
-          <SecondaryInfoContainer>
-            <span>Rating & Reviews count</span>
+            <SecondaryInfoContainer>
+              <RatingInfo>
+                {rating}({reviews.length} reviews)
+              </RatingInfo>
 
-            <LocationContainer>
-              <svg width="16px" height="16px" fill="none">
-                <use href={`${sprite}#icon-location`} />
+              <LocationContainer>
+                <svg width="16px" height="16px" fill="none">
+                  <use href={`${sprite}#icon-location`} />
+                </svg>
+                <span>{location}</span>
+              </LocationContainer>
+            </SecondaryInfoContainer>
+          </SecondaryLineContainer>
+
+          <Description>{description}</Description>
+
+          <DetailsContainer>
+            <li>
+              <svg width="20px" height="20px" fill="none">
+                <use href={`${sprite}#icon-users`} />
               </svg>
-              <span>Location</span>
-            </LocationContainer>
-          </SecondaryInfoContainer>
-        </SecondaryLineContainer>
+              <span>{adults} adults</span>
+            </li>
+            <li>
+              <svg width="20px" height="20px" fill="none">
+                <use href={`${sprite}#icon-transmission`} />
+              </svg>
+              <span>{capitalizeFirstLetter(transmission)}</span>
+            </li>
+            <li>
+              <svg width="20px" height="20px" fill="none">
+                <use href={`${sprite}#icon-petrol`} />
+              </svg>
+              <span>{capitalizeFirstLetter(engine)}</span>
+            </li>
+            <li>
+              <svg width="20px" height="20px" fill="none">
+                <use href={`${sprite}#icon-kitchen`} />
+              </svg>
+              <span>Kitchen</span>
+            </li>
+            <li>
+              <svg width="20px" height="20px" fill="none">
+                <use href={`${sprite}#icon-bed`} />
+              </svg>
+              <span>{beds} beds</span>
+            </li>
+            <li>
+              <svg width="20px" height="20px" fill="none">
+                <use href={`${sprite}#icon-ac`} />
+              </svg>
+              <span>AC</span>
+            </li>
+          </DetailsContainer>
 
-        <p>Description</p>
-
-        <DetailsContainer>
-          {/* {equipment.map(el => {
-                      return <li></li>
-                  }) } */}
-        </DetailsContainer>
-
-        <ShowMoreButton>Show More</ShowMoreButton>
-      </div>
-    </CardContainer>
+          <ShowMoreButton onClick={handleShowMore}>Show More</ShowMoreButton>
+        </CamperInfoContainer>
+      </CardContainer>
+      <Modal open={isModalOpen} onClose={onClose}>
+        <CamperDetails camperInfo={camperInfo} />
+      </Modal>
+    </>
   );
 };
 

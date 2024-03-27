@@ -1,14 +1,23 @@
 import { Field, Form, Formik } from 'formik';
 import sprite from 'assets/svg/sprite.svg';
 import {
-  ButtonGroup,
+  EquipmentButtonGroup,
   FilterButton,
+  FilterContainer,
+  FilterHeader,
   FilterIcon,
+  FilterTag,
+  HorizontalLine,
+  LocationContainer,
+  LocationInput,
+  LocationTag,
   SearchButton,
+  TypeButtonGroup,
 } from './FilterForm.styled';
 
 const CatalogFilterForm = () => {
   const initialValues = {
+    location: '',
     equipment: [],
     type: '',
   };
@@ -18,31 +27,35 @@ const CatalogFilterForm = () => {
   };
 
   return (
-    <div>
+    <FilterContainer>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form autoComplete="off">
-          <span>Location</span>
-          <div>
-            <label>
-              <svg width="18px" height="20px" fill="none">
-                {/* <use href={`${sprite}#icon`} /> */}
-              </svg>
-            </label>
-            <Field
+        <Form autoComplete="off" noValidate>
+          <LocationTag>Location</LocationTag>
+
+          <LocationContainer>
+            <svg width="18px" height="20px" fill="none">
+              <use href={`${sprite}#icon-location`} />
+            </svg>
+            <LocationInput
               type="text"
               name="location"
               id="location"
               placeholder="City"
             />
-          </div>
+          </LocationContainer>
 
-          <span>Filters</span>
+          <FilterTag>Filters</FilterTag>
 
-          <h2 id="vehicle-equipment-group">Vehicle equipment</h2>
+          <FilterHeader id="vehicle-equipment-group">
+            Vehicle equipment
+          </FilterHeader>
 
-          <hr />
+          <HorizontalLine />
 
-          <ButtonGroup role="group" aria-labelledby="vehicle-equipment-group">
+          <EquipmentButtonGroup
+            role="group"
+            aria-labelledby="vehicle-equipment-group"
+          >
             <FilterButton>
               <Field type="checkbox" name="equipment" value="ac" hidden />
               <FilterIcon width="32px" height="32px" fill="none">
@@ -101,13 +114,13 @@ const CatalogFilterForm = () => {
 
               <p>Shower/WC</p>
             </FilterButton>
-          </ButtonGroup>
+          </EquipmentButtonGroup>
 
-          <h2 id="vehicle-type-group">Vehicle type</h2>
+          <FilterHeader id="vehicle-type-group">Vehicle type</FilterHeader>
 
-          <hr />
+          <HorizontalLine />
 
-          <ButtonGroup role="group" aria-labelledby="vehicle-type-group">
+          <TypeButtonGroup role="group" aria-labelledby="vehicle-type-group">
             <FilterButton>
               <Field type="radio" name="type" value="van" hidden />
               <FilterIcon width="32px" height="32px" fill="none">
@@ -135,12 +148,12 @@ const CatalogFilterForm = () => {
 
               <p>Alcove</p>
             </FilterButton>
-          </ButtonGroup>
+          </TypeButtonGroup>
 
           <SearchButton type="submit">Search</SearchButton>
         </Form>
       </Formik>
-    </div>
+    </FilterContainer>
   );
 };
 
