@@ -9,7 +9,7 @@ export const HomeContainer = styled.div`
   justify-content: center;
   gap: 50px;
 
-  height: 100%;
+  height: 100vh;
 
   background-image: linear-gradient(
       rgba(46, 47, 66, 0.7),

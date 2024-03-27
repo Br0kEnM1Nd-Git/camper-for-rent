@@ -3,11 +3,41 @@ import styled from 'styled-components';
 export const CatalogPageContainer = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 64px;
+
+  padding: 100px 64px;
 
   & > div:first-child {
-    width: 40%;
+    width: 360px;
   }
   & > div:last-child {
-    width: 60%;
+    width: 888px;
+  }
+`;
+
+export const CatalogContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 50px;
+`;
+
+export const CamperCardsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+`;
+
+export const LoadMoreButton = styled.button`
+  padding: 16px 32px;
+  background-color: #ffffff;
+
+  border: 1px solid rgba(71, 84, 103, 0.2);
+  border-radius: 200px;
+
+  &:hover {
+    border-color: var(--button);
   }
 `;
