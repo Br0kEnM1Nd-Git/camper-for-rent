@@ -15,6 +15,11 @@
   color: var(--main);
 }
 
+*:focus-visible {
+  outline: 2px solid dodgerblue;
+  outline-offset: 2px;
+}
+
 ul,
 ol {
   list-style-type: none;
@@ -25,12 +30,20 @@ a {
   text-decoration: none;
 }
 
+svg {
+  stroke: var(--main);
+}
+
 button {
   cursor: pointer;
+  letter-spacing: -0.05em;
 }
 
 body {
   font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 400;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -38,11 +51,4 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
-
-#root {
-  width: 100vw;
-  height: 100vh;
-
-  overflow-x: hidden;
 }
