@@ -22,7 +22,7 @@ const Booking = () => {
   return (
     <BookingContainer>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <Form autoComplete="off" noValidate>
+        <Form autoComplete="off">
           <FormHeader>Book your campervan now</FormHeader>
 
           <FormSecondaryText>
@@ -30,11 +30,23 @@ const Booking = () => {
           </FormSecondaryText>
 
           <InputsGroup>
-            <Field type="text" name="name" id="name" placeholder="Name" />
+            <Field
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name"
+              required
+            />
 
-            <Field type="email" name="email" id="email" placeholder="Email" />
+            <Field
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Email"
+              required
+            />
 
-            <Field type="date" name="date" id="date" />
+            <Field type="date" name="date" id="date" required />
 
             <Field as="textarea" name="comment" id="comment" rows="5" />
           </InputsGroup>
