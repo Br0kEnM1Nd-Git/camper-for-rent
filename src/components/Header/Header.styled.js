@@ -14,12 +14,9 @@ export const NavigationContainer = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  /* gap: 40px; */
 `;
 
-export const NavContainer = styled.nav`
-  /* flex-grow: 1; */
-`;
+export const NavContainer = styled.nav``;
 
 export const NavList = styled.ul`
   display: flex;
