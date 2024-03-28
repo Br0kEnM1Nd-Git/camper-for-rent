@@ -19,8 +19,17 @@ import capitalizeFirstLetter from 'utils/capitalize';
 import { useState } from 'react';
 import Modal from 'components/Modal';
 import CamperDetails from 'components/CamperDetails';
+import { useDispatch } from 'react-redux';
+import {
+  addToFavoritesAction,
+  removeFromFavoritesAction,
+} from '../../../redux/favorites/favoritesSlice';
 
-const CamperCard = ({ camperInfo }) => {
+const CamperCard = ({ camperInfo, favorited }) => {
+  const dispatch = useDispatch();
+
+  const [isFavorited, setIsFavorited] = useState(favorited);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleShowMore = () => {
     setIsModalOpen(true);
@@ -31,6 +40,7 @@ const CamperCard = ({ camperInfo }) => {
   };
 
   const {
+    _id: id,
     gallery,
     name,
     price,
@@ -43,6 +53,13 @@ const CamperCard = ({ camperInfo }) => {
     transmission,
     details: { beds },
   } = camperInfo ?? {};
+
+  const handleClickFavorite = () => {
+    if (!isFavorited) dispatch(addToFavoritesAction(id));
+    else dispatch(removeFromFavoritesAction(id));
+
+    setIsFavorited(!isFavorited);
+  };
 
   return (
     <>
@@ -59,7 +76,13 @@ const CamperCard = ({ camperInfo }) => {
               <span>&#8364;{price}.00</span>
             </MainInfoContainer>
 
-            <HeartButton width="24px" height="24px" fill="none">
+            <HeartButton
+              width="24px"
+              height="24px"
+              fill="none"
+              onClick={handleClickFavorite}
+              className={isFavorited && 'favorited'}
+            >
               <use href={`${sprite}#icon-heart`} />
             </HeartButton>
           </MainLineContainer>
