@@ -16,8 +16,6 @@ const Booking = () => {
   };
 
   const handleSubmit = values => {
-    console.log(values);
-
     window.location.reload();
   };
 
