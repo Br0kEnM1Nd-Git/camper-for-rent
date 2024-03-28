@@ -14,16 +14,23 @@ import {
   SearchButton,
   TypeButtonGroup,
 } from './FilterForm.styled';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectFilters } from '../../../redux/filters/selectors';
+import { changeFiltersAction } from '../../../redux/filters/filterSlice';
 
 const CatalogFilterForm = () => {
-  const initialValues = {
+  const filters = useSelector(selectFilters);
+
+  const dispatch = useDispatch();
+
+  const initialValues = filters ?? {
     location: '',
     equipment: [],
     type: '',
   };
 
   const handleSubmit = values => {
-    console.log(values);
+    dispatch(changeFiltersAction(values));
   };
 
   return (
@@ -101,12 +108,7 @@ const CatalogFilterForm = () => {
             </FilterButton>
 
             <FilterButton>
-              <Field
-                type="checkbox"
-                name="equipment"
-                value="shower/wc"
-                hidden
-              />
+              <Field type="checkbox" name="equipment" value="shower" hidden />
 
               <FilterIcon width="32px" height="32px" fill="none">
                 <use href={`${sprite}#icon-shower`} />
