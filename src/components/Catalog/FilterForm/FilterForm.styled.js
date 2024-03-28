@@ -2,9 +2,7 @@ import { Field } from 'formik';
 import styled from 'styled-components';
 import { PrimaryButton } from 'styles/components.styled';
 
-export const FilterContainer = styled.div`
-  /* padding: 0 64px; */
-`;
+export const FilterContainer = styled.div``;
 
 export const FilterHeader = styled.h2`
   margin: 0 0 24px 0;
