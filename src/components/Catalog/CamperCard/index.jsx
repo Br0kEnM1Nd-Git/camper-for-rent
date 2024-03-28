@@ -15,7 +15,7 @@ import {
   SecondaryLineContainer,
   ShowMoreButton,
 } from './CamperCard.styled';
-import capitalizeFirstLetter from 'helpers/capitalize';
+import capitalizeFirstLetter from 'utils/capitalize';
 import { useState } from 'react';
 import Modal from 'components/Modal';
 import CamperDetails from 'components/CamperDetails';
