@@ -9,8 +9,9 @@ import CamperCard from 'components/Catalog/CamperCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getAllAdvertsThunk } from '../../redux/adverts/thunks';
-import { selectAdverts } from '../../redux/adverts/selectors';
+import { selectFilteredAdverts } from '../../redux/adverts/selectors';
 import { v4 as uuid } from 'uuid';
+import { selectFavorites } from '../../redux/favorites/selectors';
 
 const CatalogPage = () => {
   const [page, setPage] = useState(1);
@@ -22,9 +23,11 @@ const CatalogPage = () => {
     dispatch(getAllAdvertsThunk());
   }, [dispatch]);
 
-  const adverts = useSelector(selectAdverts);
-  const shownAdverts = adverts.slice(0, 4 * page);
-  const isShownButton = shownAdverts.length !== adverts.length;
+  const filteredAdverts = useSelector(selectFilteredAdverts);
+  const shownAdverts = filteredAdverts.slice(0, 4 * page);
+  const isShownButton = shownAdverts.length !== filteredAdverts.length;
+
+  const favoritedAdverts = useSelector(selectFavorites);
 
   return (
     <CatalogPageContainer>
@@ -32,10 +35,15 @@ const CatalogPage = () => {
 
       <CatalogContainer>
         <CamperCardsContainer>
-          {adverts.length > 0 &&
-            shownAdverts.map(advert => (
-              <CamperCard key={uuid()} camperInfo={advert} />
-            ))}
+          {filteredAdverts.length > 0
+            ? shownAdverts.map(advert => (
+                <CamperCard
+                  key={uuid()}
+                  camperInfo={advert}
+                  favorited={favoritedAdverts.indexOf(advert._id) >= 0}
+                />
+              ))
+            : 'Nothing Found'}
         </CamperCardsContainer>
 
         {isShownButton && (
