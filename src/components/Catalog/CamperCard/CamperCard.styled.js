@@ -53,7 +53,8 @@ export const MainInfoContainer = styled.div`
 export const HeartButton = styled.svg`
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &.favorited {
     fill: var(--button);
     stroke: var(--button);
   }
