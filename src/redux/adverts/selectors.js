@@ -13,18 +13,16 @@ const selectFilteredAdverts = createSelector(
         location,
         details: { kitchen, shower, TV: tv, airConditioner: ac },
       }) => {
-        console.log(filters);
         if (!!filters.location) return filters.location === location;
 
         if (filters.equipment.length > 0) {
           const equipmentFilters = {};
-          console.log('equipment', equipmentFilters);
 
           filters.equipment.forEach(el => {
             equipmentFilters[el] = el;
           });
 
-          if (!!equipmentFilters.ac) return equipmentFilters.ac === ac;
+          if (!!equipmentFilters.ac) return !!ac;
           if (!!equipmentFilters.automatic)
             return equipmentFilters.automatic === transmission;
           if (!!equipmentFilters.kitchen) return !!kitchen;
