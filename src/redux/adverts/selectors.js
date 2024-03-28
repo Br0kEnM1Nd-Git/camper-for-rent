@@ -13,10 +13,11 @@ const selectFilteredAdverts = createSelector(
         location,
         details: { kitchen, shower, TV: tv, airConditioner: ac },
       }) => {
+        console.log(filters);
+
         if (!!filters.location)
-          return location
-            .toLowerCase()
-            .includes(filters.location.toLowerCase());
+          if (!location.toLowerCase().includes(filters.location.toLowerCase()))
+            return false;
 
         if (filters.equipment.length > 0) {
           const equipmentFilters = {};
@@ -25,15 +26,15 @@ const selectFilteredAdverts = createSelector(
             equipmentFilters[el] = el;
           });
 
-          if (!!equipmentFilters.ac) return !!ac;
+          if (!!equipmentFilters.ac) if (!ac) return false;
           if (!!equipmentFilters.automatic)
-            return equipmentFilters.automatic === transmission;
-          if (!!equipmentFilters.kitchen) return !!kitchen;
-          if (!!equipmentFilters.tv) return !!tv;
-          if (!!equipmentFilters.shower) return !!shower;
+            if (equipmentFilters.automatic !== transmission) return false;
+          if (!!equipmentFilters.kitchen) if (!kitchen) return false;
+          if (!!equipmentFilters.tv) if (!tv) return false;
+          if (!!equipmentFilters.shower) if (!shower) return false;
         }
 
-        if (!!filters.type) return filters.type === form;
+        if (!!filters.type) if (filters.type !== form) return false;
 
         return true;
       }
