@@ -25,11 +25,6 @@ export const ButtonGroup = styled.div`
 
 export const EquipmentButtonGroup = styled(ButtonGroup)`
   margin: 0 0 32px 0;
-
-  & .icon-ac {
-    fill: var(--main);
-    stroke: none;
-  }
 `;
 
 export const TypeButtonGroup = styled(ButtonGroup)`

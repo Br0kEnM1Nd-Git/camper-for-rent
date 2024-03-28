@@ -69,7 +69,7 @@ const CatalogFilterForm = () => {
                 width="32px"
                 height="32px"
                 fill="none"
-                className="icon-ac"
+                className="icon-fill"
               >
                 <use href={`${sprite}#icon-ac`} />
               </FilterIcon>

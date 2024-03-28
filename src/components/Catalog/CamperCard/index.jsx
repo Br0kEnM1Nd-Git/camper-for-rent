@@ -110,12 +110,7 @@ const CamperCard = ({ camperInfo, favorited }) => {
 
           <DetailsContainer>
             <li>
-              <svg
-                width="20px"
-                height="20px"
-                fill="none"
-                className="icon-users"
-              >
+              <svg width="20px" height="20px" fill="none" className="icon-fill">
                 <use href={`${sprite}#icon-users`} />
               </svg>
               <span>{adults} adults</span>
@@ -127,12 +122,7 @@ const CamperCard = ({ camperInfo, favorited }) => {
               <span>{capitalizeFirstLetter(transmission)}</span>
             </li>
             <li>
-              <svg
-                width="20px"
-                height="20px"
-                fill="none"
-                className="icon-petrol"
-              >
+              <svg width="20px" height="20px" fill="none" className="icon-fill">
                 <use href={`${sprite}#icon-petrol`} />
               </svg>
               <span>{capitalizeFirstLetter(engine)}</span>
@@ -150,7 +140,7 @@ const CamperCard = ({ camperInfo, favorited }) => {
               <span>{beds} beds</span>
             </li>
             <li>
-              <svg width="20px" height="20px" fill="none" className="icon-ac">
+              <svg width="20px" height="20px" fill="none" className="icon-fill">
                 <use href={`${sprite}#icon-ac`} />
               </svg>
               <span>AC</span>

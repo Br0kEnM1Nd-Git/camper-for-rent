@@ -126,13 +126,6 @@ export const DetailsContainer = styled.ul`
 
     border-radius: 100px;
   }
-
-  & .icon-users,
-  & .icon-petrol,
-  & .icon-ac {
-    fill: var(--main);
-    stroke: none;
-  }
 `;
 
 export const ShowMoreButton = styled(PrimaryButton)`

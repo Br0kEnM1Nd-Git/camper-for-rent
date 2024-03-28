@@ -28,7 +28,7 @@ const Features = ({ camperInfo }) => {
       <div>
         <DetailsList>
           <li>
-            <svg width="20px" height="20px" fill="none">
+            <svg width="20px" height="20px" fill="none" className="icon-fill">
               <use href={`${sprite}#icon-users`} />
             </svg>
             <span>{adults} adults</span>
@@ -42,14 +42,14 @@ const Features = ({ camperInfo }) => {
           </li>
 
           <li>
-            <svg width="20px" height="20px" fill="none">
+            <svg width="20px" height="20px" fill="none" className="icon-fill">
               <use href={`${sprite}#icon-ac`} />
             </svg>
             <span>AC</span>
           </li>
 
           <li>
-            <svg width="20px" height="20px" fill="none">
+            <svg width="20px" height="20px" fill="none" className="icon-fill">
               <use href={`${sprite}#icon-petrol`} />
             </svg>
             <span>{capitalizeFirstLetter(engine)}</span>
