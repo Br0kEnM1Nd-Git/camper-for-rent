@@ -1,28 +1,10 @@
-import {
-  HeaderContainer,
-  // LogoContainer,
-  NavContainer,
-  NavList,
-  // NavigationContainer,
-} from './Header.styled';
-// import logo from '../../assets/img/logo.png';
-import {
-  NavLink,
-  // useNavigate
-} from 'react-router-dom';
+import { HeaderContainer, NavContainer, NavList } from './Header.styled';
+
+import { NavLink } from 'react-router-dom';
 
 const Header = () => {
-  // const navigate = useNavigate();
-
-  // const handleClickLogo = () => navigate('/');
-
   return (
     <HeaderContainer>
-      {/* <NavigationContainer>
-        <LogoContainer onClick={handleClickLogo}>
-          <img src={logo} alt="Logo" />
-        </LogoContainer> */}
-
       <NavContainer>
         <NavList>
           <li>
@@ -36,7 +18,6 @@ const Header = () => {
           </li>
         </NavList>
       </NavContainer>
-      {/* </NavigationContainer> */}
     </HeaderContainer>
   );
 };
