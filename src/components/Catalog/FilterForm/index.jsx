@@ -65,10 +65,14 @@ const CatalogFilterForm = () => {
           >
             <FilterButton>
               <Field type="checkbox" name="equipment" value="ac" hidden />
-              <FilterIcon width="32px" height="32px" fill="none">
+              <FilterIcon
+                width="32px"
+                height="32px"
+                fill="none"
+                className="icon-ac"
+              >
                 <use href={`${sprite}#icon-ac`} />
               </FilterIcon>
-              AC-icon
               <p>AC</p>
             </FilterButton>
 
