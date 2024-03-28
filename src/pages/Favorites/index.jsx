@@ -24,10 +24,13 @@ const FavoritesPage = () => {
   }, [dispatch]);
 
   const filteredAdverts = useSelector(selectFilteredAdverts);
-  const shownAdverts = filteredAdverts.slice(0, 4 * page);
-  const isShownButton = shownAdverts.length !== filteredAdverts.length;
+  const favoritedAdvertsIds = useSelector(selectFavorites);
+  const favoritedAdverts = filteredAdverts.filter(
+    advert => favoritedAdvertsIds.indexOf(advert._id) >= 0
+  );
 
-  const favoritedAdverts = useSelector(selectFavorites);
+  const shownAdverts = favoritedAdverts.slice(0, 4 * page);
+  const isShownButton = shownAdverts.length !== favoritedAdverts.length;
 
   return (
     <CatalogPageContainer>
@@ -35,20 +38,10 @@ const FavoritesPage = () => {
 
       <CatalogContainer>
         <CamperCardsContainer>
-          {filteredAdverts.length > 0
-            ? shownAdverts.map(advert => {
-                const isFavorited = favoritedAdverts.indexOf(advert._id) >= 0;
-
-                if (!isFavorited) return null;
-
-                return (
-                  <CamperCard
-                    key={uuid()}
-                    camperInfo={advert}
-                    favorited={isFavorited}
-                  />
-                );
-              })
+          {shownAdverts.length > 0
+            ? shownAdverts.map(advert => (
+                <CamperCard key={uuid()} camperInfo={advert} favorited />
+              ))
             : 'Nothing found'}
         </CamperCardsContainer>
 
