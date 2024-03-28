@@ -13,7 +13,10 @@ const selectFilteredAdverts = createSelector(
         location,
         details: { kitchen, shower, TV: tv, airConditioner: ac },
       }) => {
-        if (!!filters.location) return filters.location === location;
+        if (!!filters.location)
+          return location
+            .toLowerCase()
+            .includes(filters.location.toLowerCase());
 
         if (filters.equipment.length > 0) {
           const equipmentFilters = {};
