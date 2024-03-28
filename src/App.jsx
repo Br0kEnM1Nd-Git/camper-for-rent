@@ -1,7 +1,7 @@
 import { Suspense, lazy } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-const Loader = lazy(() => import('./helpers/Loader'));
+const Loader = lazy(() => import('./utils/Loader'));
 const Layout = lazy(() => import('./layout'));
 const Home = lazy(() => import('./pages/Home'));
 const Catalog = lazy(() => import('./pages/Catalog'));
