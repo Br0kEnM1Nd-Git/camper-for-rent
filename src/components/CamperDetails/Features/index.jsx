@@ -1,5 +1,5 @@
 import sprite from 'assets/svg/sprite.svg';
-import capitalizeFirstLetter from 'helpers/capitalize';
+import capitalizeFirstLetter from 'utils/capitalize';
 import {
   DetailsList,
   HorizontalLine,
