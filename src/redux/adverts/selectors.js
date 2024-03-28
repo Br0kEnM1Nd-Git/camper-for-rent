@@ -13,8 +13,6 @@ const selectFilteredAdverts = createSelector(
         location,
         details: { kitchen, shower, TV: tv, airConditioner: ac },
       }) => {
-        console.log(filters);
-
         if (!!filters.location)
           if (!location.toLowerCase().includes(filters.location.toLowerCase()))
             return false;
