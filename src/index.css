@@ -70,3 +70,8 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #e44848;
 }
+
+svg.icon-fill {
+  fill: var(--main);
+  stroke: none;
+}
