@@ -4,7 +4,7 @@ import { LoaderContainer } from './Loader.styled';
 const Loader = () => {
   return (
     <LoaderContainer>
-      <Hourglass />;
+      <Hourglass />
     </LoaderContainer>
   );
 };
