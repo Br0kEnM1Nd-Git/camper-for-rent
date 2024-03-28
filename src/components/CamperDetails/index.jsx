@@ -21,8 +21,6 @@ import { useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
 const CamperDetails = ({ camperInfo }) => {
-  console.log(camperInfo);
-
   const [isFeaturesShown, setIsFeaturesShown] = useState(true);
 
   const handleOpenFeatures = () => {
