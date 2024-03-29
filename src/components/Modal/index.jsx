@@ -1,6 +1,12 @@
 import { createPortal } from 'react-dom';
 import { useEffect } from 'react';
-import { ModalContainer, ModalOverlay } from './Modal.styled';
+import {
+  ModalCloseButton,
+  ModalContainer,
+  ModalContentContainer,
+  ModalOverlay,
+} from './Modal.styled';
+import sprite from 'assets/svg/sprite.svg';
 
 const Modal = ({ children, open, onClose }) => {
   useEffect(() => {
@@ -19,11 +25,28 @@ const Modal = ({ children, open, onClose }) => {
     }
   };
 
+  const handleCloseClick = () => {
+    onClose();
+  };
+
   if (!open) return null;
 
   return createPortal(
     <ModalOverlay onClick={handleBackdropClick}>
-      <ModalContainer>{children}</ModalContainer>
+      <ModalContainer>
+        <ModalContentContainer>
+          <ModalCloseButton
+            width="32px"
+            height="32px"
+            fill="none"
+            onClick={handleCloseClick}
+          >
+            <use href={`${sprite}#icon-close`} />
+          </ModalCloseButton>
+
+          {children}
+        </ModalContentContainer>
+      </ModalContainer>
     </ModalOverlay>,
     document.getElementById('modal-portal')
   );
