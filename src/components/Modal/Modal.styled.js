@@ -23,3 +23,17 @@ export const ModalContainer = styled.div`
 
   z-index: 101;
 `;
+
+export const ModalContentContainer = styled.div`
+  position: relative;
+`;
+
+export const ModalCloseButton = styled.svg`
+  position: absolute;
+  top: 40px;
+  right: 40px;
+
+  cursor: pointer;
+
+  z-index: 101;
+`;
