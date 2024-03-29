@@ -12,6 +12,7 @@ import { getAllAdvertsThunk } from '../../redux/adverts/thunks';
 import { selectFilteredAdverts } from '../../redux/adverts/selectors';
 import { v4 as uuid } from 'uuid';
 import { selectFavorites } from '../../redux/favorites/selectors';
+import { selectApiState } from '../../redux/rootReducers/selectors';
 
 const FavoritesPage = () => {
   const [page, setPage] = useState(1);
@@ -22,6 +23,8 @@ const FavoritesPage = () => {
   useEffect(() => {
     dispatch(getAllAdvertsThunk());
   }, [dispatch]);
+
+  const { isLoading, error } = useSelector(selectApiState);
 
   const filteredAdverts = useSelector(selectFilteredAdverts);
   const favoritedAdvertsIds = useSelector(selectFavorites);
@@ -42,7 +45,11 @@ const FavoritesPage = () => {
             ? shownAdverts.map(advert => (
                 <CamperCard key={uuid()} camperInfo={advert} favorited />
               ))
-            : 'Nothing found'}
+            : isLoading
+            ? 'Loading...'
+            : error
+            ? error
+            : 'Nothing found.'}
         </CamperCardsContainer>
 
         {isShownButton && (

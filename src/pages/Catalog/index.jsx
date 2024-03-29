@@ -12,6 +12,7 @@ import { getAllAdvertsThunk } from '../../redux/adverts/thunks';
 import { selectFilteredAdverts } from '../../redux/adverts/selectors';
 import { v4 as uuid } from 'uuid';
 import { selectFavorites } from '../../redux/favorites/selectors';
+import { selectApiState } from '../../redux/rootReducers/selectors';
 
 const CatalogPage = () => {
   const [page, setPage] = useState(1);
@@ -22,6 +23,8 @@ const CatalogPage = () => {
   useEffect(() => {
     dispatch(getAllAdvertsThunk());
   }, [dispatch]);
+
+  const { isLoading, error } = useSelector(selectApiState);
 
   const filteredAdverts = useSelector(selectFilteredAdverts);
   const shownAdverts = filteredAdverts.slice(0, 4 * page);
@@ -43,7 +46,11 @@ const CatalogPage = () => {
                   favorited={favoritedAdverts.indexOf(advert._id) >= 0}
                 />
               ))
-            : 'Nothing Found'}
+            : isLoading
+            ? 'Loading...'
+            : error
+            ? error
+            : 'Nothing found.'}
         </CamperCardsContainer>
 
         {isShownButton && (
